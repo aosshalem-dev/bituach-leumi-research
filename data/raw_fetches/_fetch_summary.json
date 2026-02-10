@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-02-10T17:10:54.099181",
+  "total": 9,
+  "successful": 7,
+  "failed": 2,
+  "results": [
+    {
+      "id": "wikisource_interim_agreement",
+      "url": "https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%99%D7%99%D7%A9%D7%95%D7%9D_%D7%94%D7%A1%D7%9B%D7%9D_%D7%94%D7%91%D7%99%D7%A0%D7%99%D7%99%D7%9D_%D7%91%D7%93%D7%91%D7%A8_%D7%94%D7%92%D7%93%D7%94_%D7%94%D7%9E%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%95%D7%A8%D7%A6%D7%95%D7%A2%D7%AA_%D7%A2%D7%96%D7%94_(%D7%A1%D7%9E%D7%9B%D7%95%D7%99%D7%95%D7%AA_%D7%A9%D7%99%D7%A4%D7%95%D7%98_%D7%95%D7%94%D7%95%D7%A8%D7%90%D7%95%D7%AA_%D7%90%D7%97%D7%A8%D7%95%D7%AA)_(%D7%AA%D7%99%D7%A7%D7%95%D7%A0%D7%99_%D7%97%D7%A7%D7%99%D7%A7%D7%94)",
+      "success": true,
+      "status_code": 200,
+      "text_length": 8042,
+      "error": null
+    },
+    {
+      "id": "wikisource_nii_law",
+      "url": "https://he.wikisource.org/wiki/%D7%97%D7%95%D7%A7_%D7%94%D7%91%D7%99%D7%98%D7%95%D7%97_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99",
+      "success": true,
+      "status_code": 200,
+      "text_length": 451588,
+      "error": null
+    },
+    {
+      "id": "knesset_old_law_page",
+      "url": "https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawprimary.aspx?lawitemid=2000197",
+      "success": false,
+      "status_code": 247,
+      "text_length": 0,
+      "error": "HTTP 247"
+    },
+    {
+      "id": "knesset_new_law_page",
+      "url": "https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawprimary.aspx?lawitemid=2000198",
+      "success": false,
+      "status_code": 247,
+      "text_length": 0,
+      "error": "HTTP 247"
+    },
+    {
+      "id": "knesset_research_nii_foreigners",
+      "url": "https://fs.knesset.gov.il/globaldocs/MMM/a0be8d55-f7f7-e411-80c8-00155d010977/2_a0be8d55-f7f7-e411-80c8-00155d010977_11_8948.pdf",
+      "success": true,
+      "status_code": 200,
+      "text_length": 117,
+      "error": null
+    },
+    {
+      "id": "nevo_interim_agreement_law",
+      "url": "https://www.nevo.co.il/law_html/law01/177_006.htm",
+      "success": true,
+      "status_code": 200,
+      "text_length": 19003,
+      "error": null
+    },
+    {
+      "id": "kolzchut_nii_palestinian",
+      "url": "https://www.kolzchut.org.il/he/%D7%91%D7%99%D7%98%D7%95%D7%97_%D7%9C%D7%90%D7%95%D7%9E%D7%99_%D7%9C%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D_%D7%A4%D7%9C%D7%A1%D7%98%D7%99%D7%A0%D7%99%D7%9D",
+      "success": true,
+      "status_code": 200,
+      "text_length": 6520,
+      "error": null
+    },
+    {
+      "id": "kolzchut_resident_definition",
+      "url": "https://www.kolzchut.org.il/he/%D7%AA%D7%95%D7%A9%D7%91_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "success": true,
+      "status_code": 200,
+      "text_length": 4946,
+      "error": null
+    },
+    {
+      "id": "wikipedia_salach_hassan",
+      "url": "https://he.wikipedia.org/wiki/%D7%91%D7%92%22%D7%A5_%D7%A1%D7%9C%D7%90%D7%97_%D7%97%D7%A1%D7%9F_%D7%A0%D7%92%D7%93_%D7%94%D7%9E%D7%95%D7%A1%D7%93_%D7%9C%D7%91%D7%99%D7%98%D7%95%D7%97_%D7%9C%D7%90%D7%95%D7%9E%D7%99",
+      "success": true,
+      "status_code": 200,
+      "text_length": 15914,
+      "error": null
+    }
+  ]
+}

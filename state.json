@@ -1,0 +1,51 @@
+{
+  "project": "bituach_leumi_research",
+  "created": "2026-02-10",
+  "last_updated": "2026-02-10",
+  "status": "research_complete_writing_pending",
+  "coordinator_insights": [
+    "Architecture pivot: coordinator does web research, agents do writing/analysis only",
+    "All 6 streams have partial data - sufficient for initial draft",
+    "Key gaps: full text of old 1968 law, specific case law on Palestinian workers, FOI responses",
+    "Salach Hassan case is about income support not NII directly - but relevant by analogy",
+    "The equalization levy is a critical mechanism worth a dedicated section in the paper"
+  ],
+  "streams": {
+    "stream_1_old_law": {
+      "description": "חוק ביטוח לאומי ישן (תשכ\"ח-1968) – הגדרת מבוטח",
+      "status": "partial_data_collected",
+      "data_file": "data/stream_1_old_law.json",
+      "summary": "Collected: historical overview, differences from 1995 law, absence of section 2a, 1987 regulations context. Missing: full law text (scanned PDF only)."
+    },
+    "stream_2_new_law": {
+      "description": "חוק ביטוח לאומי חדש (תשנ\"ה-1995) – הגדרת מבוטח + תקנות",
+      "status": "partial_data_collected",
+      "data_file": "data/stream_2_new_law.json",
+      "summary": "Collected: section 2a text, resident definition, varying insured definitions by branch, insurance obligation. Missing: full law text from Nevo (requires login)."
+    },
+    "stream_3_additional_legislation": {
+      "description": "חקיקה נוספת: חוק יישום הסכם עזה ויריחו + חוקים נוספים המתייחסים לזכאות",
+      "status": "partial_data_collected",
+      "data_file": "data/stream_3_additional_legislation.json",
+      "summary": "Collected: Gaza-Jericho law overview, section 37 NII amendment, equalization levy details, 1987 regulations, IYoSh law, 3 employment scenarios. Missing: full section 37 text, Paris Protocol provisions."
+    },
+    "stream_4_practice": {
+      "description": "מה קורה בפועל: הנחיות אוצר, רשות אוכלוסין, תשובות חופש מידע",
+      "status": "partial_data_collected",
+      "data_file": "data/stream_4_practice.json",
+      "summary": "Collected: insurance branches for Palestinians, 2025 rates, payment mechanisms, permit trade, pension problems, sick pay gaps, accessibility barriers. Missing: FOI responses, Treasury guidelines."
+    },
+    "stream_5_case_law": {
+      "description": "פסיקה והיסטוריה: פסקי דין מרכזיים, אבני דרך",
+      "status": "partial_data_collected",
+      "data_file": "data/stream_5_case_law.json",
+      "summary": "Collected: center of life test, Salach Hassan (income support analogy), East Jerusalem residents, 183-day vs center-of-life test, State Comptroller findings. Missing: specific case law on Palestinian workers NII claims."
+    },
+    "stream_6_meta_definitions": {
+      "description": "מטא: תחולת החוק הישראלי, הגדרת עובד, ריבונות, דוגמאות מחוקים אחרים",
+      "status": "partial_data_collected",
+      "data_file": "data/stream_6_meta_definitions.json",
+      "summary": "Collected: dual legal system in West Bank, sovereignty extension costs, IYoSh law, East Jerusalem residency. Missing: academic analysis of personal vs territorial jurisdiction."
+    }
+  }
+}

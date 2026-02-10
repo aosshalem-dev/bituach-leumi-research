@@ -1,0 +1,13 @@
+{
+  "id": "knesset_new_law_page",
+  "url": "https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawprimary.aspx?lawitemid=2000198",
+  "description": "חוק הביטוח הלאומי [נוסח משולב], התשנ\"ה-1995 - Knesset legislation page",
+  "fetch_timestamp": "2026-02-10T17:10:40.543173",
+  "success": false,
+  "status_code": 247,
+  "content_type": "text/html; charset=utf-8",
+  "raw_text": null,
+  "extracted_text": null,
+  "error": "HTTP 247",
+  "final_url": "https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawprimary.aspx?lawitemid=2000198"
+}

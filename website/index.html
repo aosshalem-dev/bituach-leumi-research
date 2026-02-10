@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who is Insured by National Insurance (Bituach Leumi)? - Research Findings</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .nav {
+            background: white;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .finding {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-right: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .finding-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95em;
+        }
+
+        .comparison-table thead {
+            background: #3498db;
+            color: white;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #e8f4f8;
+        }
+
+        .yes {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .no {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .partial {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+            margin: 30px 0;
+        }
+
+        .timeline-item {
+            padding: 20px 30px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-right: 4px solid #3498db;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: #555;
+        }
+
+        .sources {
+            background: #ecf0f1;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .sources h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .source-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .source-item {
+            margin: 12px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .source-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .source-item a:hover {
+            text-decoration: underline;
+        }
+
+        .source-type {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            margin-right: 10px;
+        }
+
+        .insight-box {
+            background: #fff9e6;
+            border-right: 4px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .insight-box h4 {
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+
+        .key-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .number-card {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .number-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .number-card .label {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            border-radius: 8px;
+        }
+
+        .difficulty-box {
+            background: #ffe6e6;
+            border-right: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .difficulty-box strong {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>מי מבוטח בביטוח הלאומי?</h1>
+            <p class="subtitle">Who is Insured by National Insurance (Bituach Leumi)?</p>
+            <p class="subtitle">מחקר משפטי מקיף | Comprehensive Legal Research</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#old-law">Old Law (1968)</a></li>
+                <li><a href="#new-law">New Law (1995)</a></li>
+                <li><a href="#legislation">Additional Legislation</a></li>
+                <li><a href="#practice">Practice</a></li>
+                <li><a href="#case-law">Case Law</a></li>
+                <li><a href="#comparison">Comparison Table</a></li>
+                <li><a href="#charts">Data Visualization</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
+        </nav>
+
+        <section id="overview">
+            <h2>סקירה כללית | Overview</h2>
+
+            <div class="key-numbers">
+                <div class="number-card">
+                    <div class="value">4</div>
+                    <div class="label">אוכלוסיות שונות<br>Different Populations</div>
+                </div>
+                <div class="number-card">
+                    <div class="value">1.5B ₪</div>
+                    <div class="label">פנסיה לא מנוהלת<br>Unmanaged Pension</div>
+                </div>
+                <div class="number-card">
+                    <div class="value">500M ₪</div>
+                    <div class="label">דמי מחלה לא שולמו<br>Unpaid Sick Pay</div>
+                </div>
+                <div class="number-card">
+                    <div class="value">48%</div>
+                    <div class="label">סחר בהיתרים<br>Permit Trade</div>
+                </div>
+            </div>
+
+            <p>מחקר זה בוחן את השאלה המשפטית המרכזית: <strong>מי מבוטח בביטוח הלאומי הישראלי?</strong> השאלה נבחנת על רקע של מערכת משפטית כפולה השוררת בשטחים, שבה ישראלים מקבלים כיסוי ביטוחי מלא ואילו פלסטינים מקבלים כיסוי חלקי בלבד.</p>
+
+            <p>המחקר מתמקד בארבע אוכלוסיות עיקריות:</p>
+            <ul style="margin-right: 40px; margin-bottom: 20px;">
+                <li><strong>תושבי ישראל</strong> - כיסוי ביטוחי מלא בכל הענפים</li>
+                <li><strong>מתנחלים ישראלים ביהודה ושומרון</strong> - כיסוי מלא באמצעות תחולה אישית של החוק</li>
+                <li><strong>עובדים פלסטינים</strong> - כיסוי חלקי ב-3 ענפים בלבד</li>
+                <li><strong>תושבי חוץ</strong> - לרוב ללא כיסוי</li>
+            </ul>
+
+            <div class="insight-box">
+                <h4>תובנה מרכזית | Key Insight</h4>
+                <p>חוק הביטוח הלאומי אינו מגדיר את המונח "תושב ישראל". ההגדרה התפתחה בפסיקה באמצעות <strong>מבחן מרכז החיים</strong> - שבוחן את מרב הזיקות של האדם לישראל (מגורים, משפחה, עבודה, נכסים) ולא רק מניית ימי שהייה.</p>
+            </div>
+        </section>
+
+        <section id="old-law">
+            <h2>Stream 1: החוק הישן (1968)</h2>
+
+            <div class="finding">
+                <div class="finding-title">חוק הביטוח הלאומי [נוסח משולב], התשכ"ח-1968 - סקירה</div>
+                <p>חוק הביטוח הלאומי הישן (תשכ"ח-1968) היה הנוסח המשולב הראשון של חוקי הביטוח הלאומי. הוא הוחלף על ידי הנוסח המשולב החדש (תשנ"ה-1995) ביום 1 באוקטובר 1995. החוק המקורי חוקק לפני כיבוש 1967, ולכן שאלת תחולתו על שטחי יהודה ושומרון וחבל עזה לא הייתה רלוונטית בגרסתו המקורית.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">הגדרת מבוטח בחוק הישן</div>
+                <p>בחוק הישן, הגדרת 'מבוטח' התבססה על מושג 'תושב ישראל', אך לא כללה הגדרה מפורשת של מיהו 'תושב'. ההגדרה התפתחה בפסיקה במהלך השנים, לפני שסעיף 2א נוסף בנוסח החדש (1995) שקבע מפורשות מי אינו נחשב תושב.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">היעדר סעיף 2א בחוק הישן</div>
+                <p>ההבדל המרכזי: בחוק הישן לא היה סעיף מקביל לסעיף 2א של החוק החדש שמוציא מפורשות תושבי יהודה ושומרון מהגדרת 'תושב'. ההוצאה מההגדרה נעשתה בדרכים אחרות - דרך פרשנות מנהלית ופסיקה, ובהמשך דרך תקנות הביטוח הלאומי (זכויות וחובות לשאינם תושבי ישראל) תשמ"ז-1987.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">הרקע ההיסטורי: מ-1967 עד 1995</div>
+                <p>לאחר מלחמת 1967 והכיבוש, עלתה שאלת מעמד עובדים פלסטינים לראשונה. המדינה בחרה שלא להחיל את החוק הישראלי על השטחים אלא ליצור מסלול מקביל של ביטוח מצומצם - בעיקר נפגעי עבודה. הסדר זה עוגן בתקנות 1987 ובהנחיות מנהליות.</p>
+            </div>
+
+            <div class="difficulty-box">
+                <strong>קשיי המחקר:</strong>
+                <ul style="margin-right: 20px; margin-top: 10px;">
+                    <li>הנוסח המלא של החוק הישן (1968) קיים רק כ-PDF סרוק באתר הכנסת - לא ניתן לחילוץ טקסטואלי</li>
+                    <li>חלק מהשינויים בין הנוסחים מפוזרים בתיקוני חקיקה שאינם זמינים באופן ריכוזי</li>
+                    <li>הספרות האקדמית על ההבדלים בין שני הנוסחים דלה</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="new-law">
+            <h2>Stream 2: החוק החדש (1995)</h2>
+
+            <div class="finding">
+                <div class="finding-title">הגדרת תושב - אינה מוגדרת בחוק</div>
+                <p>חוק הביטוח הלאומי אינו מגדיר מיהו תושב ישראל. הפסיקה קבעה שתושב ישראל הוא מי שמרכז חייו בישראל, לפי מבחן מרב הזיקות - היבט אובייקטיבי (מגורים, משפחה, חינוך ילדים, עבודה, נכסים) והיבט סובייקטיבי (כוונת האדם).</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">סעיף 2א - מי שאינו תושב</div>
+                <p><strong>סעיף 2א(ב)</strong> קובע כי לא יראו כתושב ישראל:</p>
+                <ul style="margin-right: 20px; margin-top: 10px;">
+                    <li>(1) שוהה שלא כדין</li>
+                    <li>(2) מי שבידו היתר לפי צו הכניסה לישראל (פטור תושבי יהודה ושומרון)</li>
+                    <li>(3) מי שבידו אשרה ורישיון לישיבת ביקור ב/1, ב/2, ב/3 או ב/4</li>
+                    <li>מי שאינו אזרח ישראלי ובידו אשרה - לא תושב אם התגורר פחות מ-183 ימים בשנה</li>
+                </ul>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">הגדרת מבוטח משתנה לפי ענף</div>
+                <p><strong>ביטוח נכות:</strong> תושב ישראל שמלאו לו 18 וטרם הגיע לגיל פרישה.<br>
+                <strong>ביטוח אבטלה:</strong> תושב ישראל או תושב ארעי שמלאו לו 18 וטרם הגיע לגיל הקבוע, והוא עובד הזכאי לשכר שמעבידו חייב בתשלום דמי ביטוח בעדו.</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>תובנות מרכזיות</h4>
+                <ul style="margin-right: 20px;">
+                    <li>החוק לא מגדיר 'תושב' - ההגדרה נקבעה בפסיקה בלבד</li>
+                    <li>הגדרת 'מבוטח' משתנה בין ענפי הביטוח השונים - אין הגדרה אחידה</li>
+                    <li>סעיף 2א מוציא במפורש תושבי יו"ש מהגדרת 'תושב'</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="legislation">
+            <h2>Stream 3: חקיקה נוספת</h2>
+
+            <div class="finding">
+                <div class="finding-title">חוק יישום הסכם הביניים (1996)</div>
+                <p>חוק יישום הסכם הביניים בדבר הגדה המערבית ורצועת עזה (סמכויות שיפוט והוראות אחרות) (תיקוני חקיקה), תשנ"ו-1996, נחקק ליישום הסכם אוסלו ב' (28.9.1995). <strong>סעיף 37</strong> מתקן את חוק הביטוח הלאומי ומגדיר 'תושב ישראל באזור' (אזרח ישראלי או תושב קבע המתגורר ביהודה ושומרון) ומקנה לו זכויות ביטוח לאומי.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">היטל ההשוואה (Equalization Levy)</div>
+                <p>היטל ההשוואה הוא ההפרש בין תשלום הביטוח המלא לבין הביטוח החלקי שמכסה עובדים פלסטינים. המעסיק מנכה את ההפרש משכר העובד, וכספים אלה אמורים לעבור למשרד האוצר ומשם לרשות הפלסטינית ולקופות החולים. <strong>בפועל</strong>, דוחות מצביעים על כך שרוב הכספים לא מגיעים ליעדם. בשנת 2014 לבדה נוכו כ-<strong>100 מיליון שקל</strong> מהעובדים למטרות שירותי בריאות ורווחה, אך רובם הועברו למשרד האוצר ולא שימשו למטרתם.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">תקנות הביטוח הלאומי (זכויות וחובות לשאינם תושבי ישראל) תשמ"ז-1987</div>
+                <p>תקנות אלו מגדירות 'תושב אזור' ומקנות זכויות וחובות מוגבלות. התקנות קובעות 5 תנאים לתושבות אזור, וכוללות 15 תקנות המסדירות ביטוח מצומצם של <strong>3 ענפים</strong>: נפגעי עבודה, אימהות, ופשיטת רגל של מעסיק. שיעורי דמי הביטוח נמוכים יותר מאלה של תושבי ישראל.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">חוק איו"ש - החלת חקיקה על ישראלים בשטחים</div>
+                <p>חוק הארכת תוקפן של תקנות שעת חירום (יהודה והשומרון - שיפוט בעבירות ועזרה משפטית), המכונה 'חוק איו"ש', מאפשר החלת חוקים ישראליים על אזרחים ישראלים המתגוררים ביהודה ושומרון. באמצעות מנגנון זה, חוק הביטוח הלאומי חל על מתנחלים ישראלים באופן אישי (לא טריטוריאלי).</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>תובנות קריטיות</h4>
+                <ul style="margin-right: 20px;">
+                    <li>מערכת כפולה: ישראלים בשטחים מקבלים ביטוח מלא, פלסטינים בשטחים מקבלים ביטוח חלקי בלבד</li>
+                    <li>היטל ההשוואה הוא מנגנון מפתח - ההפרש משמש כ'קנס' על העסקת פלסטינים</li>
+                    <li>הפער בין החוק (עובד פלסטיני זכאי לתנאים זהים) לפרקטיקה (רוב הכספים לא מגיעים ליעדם) הוא עצום</li>
+                    <li>כ-100 מיליון שקל בשנה מנוכים מעובדים פלסטינים לביטוח בריאות ורווחה - רובם לא מגיעים ליעדם</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="practice">
+            <h2>Stream 4: הפרקטיקה בשטח</h2>
+
+            <div class="finding">
+                <div class="finding-title">ענפי ביטוח לעובדים פלסטינים - כיסוי מצומצם</div>
+                <p>עובדים פלסטינים מבוטחים רק ב-<strong>3 ענפים</strong>:</p>
+                <ul style="margin-right: 20px; margin-top: 10px;">
+                    <li>(1) נפגעי עבודה - טיפול רפואי, שיקום מקצועי</li>
+                    <li>(2) פשיטת רגל של מעסיק</li>
+                    <li>(3) אימהות - מענקי לידה, דמי לידה, קצבת ילדים</li>
+                </ul>
+                <p><strong>אינם מבוטחים</strong> בביטוח אבטלה, סיעוד, זקנה ושאירים, נכות וענפים נוספים.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">שיעורי דמי ביטוח 2025</div>
+                <p><strong>עבודה בישראל:</strong><br>
+                עד 8,261 ש"ח - 0.85% (מעסיק 0.75%, עובד 0.1%)<br>
+                8,261-51,910 - 3.52% (מעסיק 2.65%, עובד 0.87%)</p>
+                <p><strong>עבודה ביו"ש:</strong><br>
+                עד 8,261 - 0.78% (מעסיק 0.71%, עובד 0.07%)<br>
+                8,261-51,910 - 3.1% (מעסיק 2.49%, עובד 0.61%)</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">סחר בהיתרים</div>
+                <p>כ-<strong>48%</strong> מהעובדים רוכשים היתרי עבודה דרך מתווכים. עלויות מוערכות ב-500 מיליון עד מעל מיליארד שקל בשנה. עובדים חותמים על מסמכי חוב כפייתיים.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">בעיות בפנסיה</div>
+                <p>כ-<strong>1.5 מיליארד שקל</strong> הצטברו בקרנות פנסיה מאז תחילת ההפרשות, מנוהלים ללא פיקוח מקצועי. המדינה עודדה היסטורית משיכות חד-פעמיות במקום חיסכון ארוך טווח.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">דמי מחלה</div>
+                <p>רק <strong>4%</strong> מהעובדים קיבלו דמי מחלה למרות הפרשות מעסיקים שהצטברו לכ-<strong>500 מיליון שקל</strong>. עובדים לא מודעים לזכויותיהם ונתקלים בחסמי גבייה.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">שינוי ינואר 2025</div>
+                <p>מינואר 2025 המעסיקים מטפלים בהנפקת תלושי שכר וחישוב ניכויים (בעבר היה באחריות הרשות). שינוי זה מעביר אחריות משמעותית מהמדינה למעסיקים.</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>הפער בין חוק לפרקטיקה</h4>
+                <p>הפער בין חוק לפרקטיקה עצום - מערכת שלמה של כספים (פנסיה, דמי מחלה) לא מגיעה לעובדים. סחר בהיתרים הוא בעיה מערכתית בהיקף מיליארדים שהרפורמות לא פתרו. מאז אוקטובר 2023 העובדים הפלסטינים בעיקר חסומים מכניסה לישראל.</p>
+            </div>
+        </section>
+
+        <section id="case-law">
+            <h2>Stream 5: פסיקה</h2>
+
+            <div class="finding">
+                <div class="finding-title">מבחן מרכז החיים - התפתחות פסיקתית</div>
+                <p>הפסיקה פיתחה את <strong>'מבחן מרכז החיים'</strong> כמבחן מרכזי לקביעת תושבות לצורך ביטוח לאומי. המבחן כולל שני היבטים: <strong>אובייקטיבי</strong> (מקום מגורים, משפחה, עבודה, נכסים, חינוך ילדים, קשרים קהילתיים) ו<strong>סובייקטיבי</strong> (תפיסת האדם את מרכז חייו). בית הדין הארצי לעבודה קבע כי יש לבחון את 'מרב הזיקות' - מכלול הנסיבות ולא קריטריון יחיד.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">בג"ץ 10662/04 סלאח חסן</div>
+                <p>בג"ץ סלאח חסן (פסק דין מ-28.2.2012) עוסק בחוק הבטחת הכנסה. הרכב של 7 שופטים קבע שסעיף 9א(ב) לחוק הבטחת הכנסה, ששלל גמלה ממי שמחזיק רכב, פוגע בזכות החוקתית לקיום בכבוד. זהו <strong>פסק הדין הראשון</strong> שבו ביטל בג"ץ חקיקה ראשית של הכנסת על בסיס פגיעה בזכות חברתית.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">תושבי מזרח ירושלים - פסיקה ייחודית</div>
+                <p>בית הדין הארצי לעבודה קבע כי תושבי מזרח ירושלים הגרים בשכונות כמו זיתון או צור באהר ייחשבו תושבים לצורך ביטוח לאומי, אך רק אם התגוררו באזורים אלו בעת שנקבע מסלול גדר ההפרדה. לאחר בניית הגדר, מי שנשאר 'מעבר לגדר' עלול לאבד את מעמדו כתושב ובכך את זכויותיו בביטוח לאומי.</p>
+            </div>
+
+            <div class="finding">
+                <div class="finding-title">מבקר המדינה על אגף שירות למעסיקים (מת"ש)</div>
+                <p>מבקר המדינה קבע שמת"ש - האחראי על ניכויי עובדים פלסטינים - 'כשל במילוי חובתו להגן על זכויות העובדים הפלסטינים'. מיליונים בניכויים למרפאות בריאות תעסוקתית הוסטו ולא שימשו למטרתם. המבקר תיאר את ההתנהלות כ'חמורה ביותר' (gravely wrong).</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>משמעות חוקתית</h4>
+                <p>בעקבות פסק דין סלאח חסן, זכויות סוציאליות כולל ביטוח לאומי עשויות ליהנות מהגנה חוקתית. משמעות אפשרית: שלילת ביטוח לאומי מאוכלוסיות שלמות עשויה להיתפס כפגיעה בזכות חוקתית לקיום בכבוד.</p>
+            </div>
+        </section>
+
+        <section id="comparison">
+            <h2>השוואת זכויות לפי אוכלוסיות</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>ענף ביטוח<br>Insurance Branch</th>
+                        <th>תושבי ישראל<br>Israeli Residents</th>
+                        <th>מתנחלים<br>Settlers</th>
+                        <th>עובדים פלסטינים<br>Palestinian Workers</th>
+                        <th>תושבי חוץ<br>Non-Residents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>זקנה ושאירים</strong><br>Old Age & Survivors</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>נכות</strong><br>Disability</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>נפגעי עבודה</strong><br>Work Injuries</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="partial">~ חלקי</td>
+                    </tr>
+                    <tr>
+                        <td><strong>אימהות</strong><br>Maternity</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ילדים</strong><br>Children</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="partial">~ חלקי</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>אבטלה</strong><br>Unemployment</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>סיעוד</strong><br>Long-term Care</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>פשיטת רגל מעסיק</strong><br>Employer Bankruptcy</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>אשפוז</strong><br>Hospitalization</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                    <tr>
+                        <td><strong>מילואים</strong><br>Reserves</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="yes">✓ כן</td>
+                        <td class="no">✗ לא</td>
+                        <td class="no">✗ לא</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="charts">
+            <h2>ניתוח נתונים | Data Visualization</h2>
+
+            <h3>כיסוי ביטוחי לפי אוכלוסיות</h3>
+            <div class="chart-container">
+                <canvas id="coverageChart"></canvas>
+            </div>
+
+            <h3>פערים כספיים (מיליוני ₪)</h3>
+            <div class="chart-container">
+                <canvas id="financialGapChart"></canvas>
+            </div>
+
+            <h3>סחר בהיתרים - עובדים פלסטינים</h3>
+            <div class="chart-container">
+                <canvas id="permitTradeChart"></canvas>
+            </div>
+        </section>
+
+        <section id="timeline">
+            <h2>ציר זמן של חקיקה מרכזית</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1968</div>
+                    <div class="timeline-desc">
+                        <strong>חוק הביטוח הלאומי [נוסח משולב], התשכ"ח-1968</strong><br>
+                        הנוסח המשולב הראשון. חוקק לפני כיבוש 1967 - שאלת השטחים לא הייתה קיימת במקור.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1987</div>
+                    <div class="timeline-desc">
+                        <strong>תקנות הביטוח הלאומי (זכויות וחובות לשאינם תושבי ישראל)</strong><br>
+                        עיגון ביטוח מצומצם לפלסטינים ב-3 ענפים בלבד: נפגעי עבודה, אימהות, פשיטת רגל של מעסיק.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1994</div>
+                    <div class="timeline-desc">
+                        <strong>הסכם עזה-יריחו (אוסלו א')</strong><br>
+                        הסכם ראשון בין ישראל לרשות הפלסטינית. תחילת התהליך המדיני.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1995</div>
+                    <div class="timeline-desc">
+                        <strong>חוק הביטוח הלאומי [נוסח משולב], התשנ"ה-1995</strong><br>
+                        הנוסח החדש. הוסיף סעיף 2א המוציא במפורש תושבי יהודה ושומרון מהגדרת 'תושב'. תחילה: 1.10.1995.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1996</div>
+                    <div class="timeline-desc">
+                        <strong>חוק יישום הסכם הביניים (אוסלו ב')</strong><br>
+                        סעיף 37 מגדיר 'תושב ישראל באזור' ומסדיר את היטל ההשוואה. החוק מעגן את המערכת הכפולה.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-desc">
+                        <strong>שינוי אחריות תלושי שכר</strong><br>
+                        מינואר 2025: אחריות הנפקת תלושי שכר וחישוב ניכויים עברה מרשות האוכלוסין למעסיקים.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sources">
+            <h2>מקורות | Sources</h2>
+
+            <div class="sources">
+                <h3>חקיקה ראשית | Primary Legislation</h3>
+                <ul class="source-list">
+                    <li class="source-item">
+                        <span class="source-type">Law</span>
+                        <a href="https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawprimary.aspx?lawitemid=2000197" target="_blank">
+                            חוק הביטוח הלאומי [נוסח משולב], התשכ"ח-1968 - אתר הכנסת
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Law</span>
+                        <a href="https://www.nevo.co.il/law_html/law01/039_002.htm" target="_blank">
+                            חוק הביטוח הלאומי [נוסח משולב], התשנ"ה-1995 - נבו
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Law</span>
+                        <a href="https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawprimary.aspx?lawitemid=2000198" target="_blank">
+                            חוק הביטוח הלאומי - אתר הכנסת
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Law</span>
+                        <a href="https://www.nevo.co.il/law_html/law01/177_006.htm" target="_blank">
+                            חוק יישום הסכם הביניים, תשנ"ו-1996 - נבו
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">PDF</span>
+                        <a href="https://fs.knesset.gov.il/6/law/6_lsr_311007.PDF" target="_blank">
+                            PDF החוק המקורי 1968 - אתר הכנסת
+                        </a>
+                    </li>
+                </ul>
+
+                <h3>תקנות | Regulations</h3>
+                <ul class="source-list">
+                    <li class="source-item">
+                        <span class="source-type">Regulation</span>
+                        <a href="https://www.hilan.co.il/מרכז-ידע/חקיקה/דיני-ביטוח-לאומי/תקנות-הביטוח-הלאומי/תקנות-הביטוח-הלאומי-זכויות-וחובות-לפי-חוק-הביטוח-הלאומי-לשאינם-תושבי-ישראל-התשמז-1987/" target="_blank">
+                            תקנות הביטוח הלאומי (זכויות וחובות לשאינם תושבי ישראל) תשמ"ז-1987
+                        </a>
+                    </li>
+                </ul>
+
+                <h3>פסיקה | Case Law</h3>
+                <ul class="source-list">
+                    <li class="source-item">
+                        <span class="source-type">Case</span>
+                        <a href="https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/04/620/106/n44&fileName=04106620.N44&type=2" target="_blank">
+                            בג"ץ 10662/04 סלאח חסן נגד המוסד לביטוח לאומי (28.2.2012)
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Case</span>
+                        <a href="https://www.btl.gov.il/About/Vaadot/PiskeiDin/NifgaeiAvoda/Pages/default.aspx" target="_blank">
+                            ביטוח לאומי - פסקי דין נפגעי עבודה
+                        </a>
+                    </li>
+                </ul>
+
+                <h3>דוחות וחקר | Reports & Research</h3>
+                <ul class="source-list">
+                    <li class="source-item">
+                        <span class="source-type">Report</span>
+                        <a href="https://kavlaoved.org.il/תחומי-פעילות/עובדים-פלסטינים/" target="_blank">
+                            קו לעובד - עובדים פלסטינים בישראל (מקור עיקרי לנתוני פנסיה, דמי מחלה וסחר בהיתרים)
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Report</span>
+                        <a href="https://fs.knesset.gov.il/globaldocs/MMM/a0be8d55-f7f7-e411-80c8-00155d010977/2_a0be8d55-f7f7-e411-80c8-00155d010977_11_8948.pdf" target="_blank">
+                            מחקר כנסת - זכויות ביטוח לאומי לזרים
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Report</span>
+                        <a href="https://maki.org.il/en/?p=6536" target="_blank">
+                            Maki - Violations of Palestinian Workers Medical Rights
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Report</span>
+                        <a href="https://law.acri.org.il/pdf/2laws-presentation.pdf" target="_blank">
+                            ACRI - שלטון אחד שתי מערכות חוק
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Report</span>
+                        <a href="https://fs.knesset.gov.il/20/Committees/20_cs_bg_365460.pdf" target="_blank">
+                            מחקר כנסת - הבדלי חקיקה ישראל ויו"ש
+                        </a>
+                    </li>
+                </ul>
+
+                <h3>מאמרים ומדריכים | Articles & Guides</h3>
+                <ul class="source-list">
+                    <li class="source-item">
+                        <span class="source-type">Guide</span>
+                        <a href="https://www.kolzchut.org.il/he/ביטוח_לאומי_לעובדים_פלסטינים" target="_blank">
+                            כל-זכות - ביטוח לאומי לעובדים פלסטינים
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Guide</span>
+                        <a href="https://www.kolzchut.org.il/he/תושב_ישראל" target="_blank">
+                            כל-זכות - תושב ישראל (הגדרה ומבחן מרכז החיים)
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Guide</span>
+                        <a href="https://www.kolzchut.org.il/he/תשלום_שכר_וזכויות_סוציאליות_לעובדים_פלסטינים" target="_blank">
+                            כל-זכות - תשלום שכר וזכויות סוציאליות
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Guideline</span>
+                        <a href="https://www.btl.gov.il/Insurance/Maasik/HahasakatToshavChutz/Pages/palestinimBeisrael.aspx" target="_blank">
+                            ביטוח לאומי - העסקת תושב הרשות הפלסטינאית
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Article</span>
+                        <a href="https://www.idi.org.il/articles/39011" target="_blank">
+                            המכון הישראלי לדמוקרטיה - הכל אודות חוק איו"ש
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Article</span>
+                        <a href="https://jewishcurrents.org/welfare-state-of-exclusion" target="_blank">
+                            Jewish Currents - Welfare State of Exclusion
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Article</span>
+                        <a href="https://www.justice.gov.il/Units/SiuaMishpaty/NewsLetters/NewsLetter3/law/Pages/hma.aspx" target="_blank">
+                            משרד המשפטים - הזכות לקיום בכבוד כזכות חוקתית
+                        </a>
+                    </li>
+                    <li class="source-item">
+                        <span class="source-type">Article</span>
+                        <a href="https://www.bshcpa.co.il/תושב-ישראל-לעניין-ביטוח-לאומי/" target="_blank">
+                            בן שושן - תושב ישראל לעניין ביטוח לאומי
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p><strong>Research Compiled: February 2026</strong></p>
+                <p>This research examines the legal framework of National Insurance (Bituach Leumi) coverage across four populations: Israeli residents, Israeli settlers in the West Bank, Palestinian workers, and non-residents.</p>
+                <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                    מחקר זה נערך למטרות אקדמיות ומשפטיות בלבד<br>
+                    This research is for academic and legal purposes only
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Chart 1: Insurance Coverage by Population
+        const ctx1 = document.getElementById('coverageChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Israeli Residents\nתושבי ישראל', 'Settlers\nמתנחלים', 'Palestinian Workers\nעובדים פלסטינים', 'Non-Residents\nתושבי חוץ'],
+                datasets: [{
+                    label: 'Number of Insurance Branches / מספר ענפי ביטוח',
+                    data: [10, 10, 3, 1],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.8)',
+                        'rgba(46, 204, 113, 0.8)',
+                        'rgba(241, 196, 15, 0.8)',
+                        'rgba(231, 76, 60, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(46, 204, 113, 1)',
+                        'rgba(241, 196, 15, 1)',
+                        'rgba(231, 76, 60, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Insurance Coverage by Population',
+                        font: { size: 18 }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 12,
+                        ticks: {
+                            stepSize: 2
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Insurance Branches'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Financial Gaps
+        const ctx2 = document.getElementById('financialGapChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Unmanaged Pension\nפנסיה לא מנוהלת', 'Unpaid Sick Pay\nדמי מחלה לא שולמו', 'Equalization Levy (2014)\nהיטל השוואה'],
+                datasets: [{
+                    label: 'Amount (Million NIS) / סכום (מיליון ₪)',
+                    data: [1500, 500, 100],
+                    backgroundColor: [
+                        'rgba(231, 76, 60, 0.8)',
+                        'rgba(230, 126, 34, 0.8)',
+                        'rgba(241, 196, 15, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(230, 126, 34, 1)',
+                        'rgba(241, 196, 15, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Financial Gaps for Palestinian Workers (Million NIS)',
+                        font: { size: 18 }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Million NIS'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Permit Trade - Pie Chart
+        const ctx3 = document.getElementById('permitTradeChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: [
+                    'Via Intermediaries (48%)\nדרך מתווכים',
+                    'Direct (52%)\nישיר'
+                ],
+                datasets: [{
+                    data: [48, 52],
+                    backgroundColor: [
+                        'rgba(231, 76, 60, 0.8)',
+                        'rgba(46, 204, 113, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(231, 76, 60, 1)',
+                        'rgba(46, 204, 113, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Palestinian Workers Permit Trade',
+                        font: { size: 18 }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

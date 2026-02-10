@@ -1,0 +1,13 @@
+{
+  "id": "knesset_research_nii_foreigners",
+  "url": "https://fs.knesset.gov.il/globaldocs/MMM/a0be8d55-f7f7-e411-80c8-00155d010977/2_a0be8d55-f7f7-e411-80c8-00155d010977_11_8948.pdf",
+  "description": "מחקר כנסת: זכויות ביטוח לאומי לזרים העובדים בישראל",
+  "fetch_timestamp": "2026-02-10T17:10:43.041770",
+  "success": true,
+  "status_code": 200,
+  "content_type": "application/pdf",
+  "raw_text": "[PDF saved to /Users/zvishalem/Downloads/bituach_leumi_research/data/raw_fetches/knesset_research_nii_foreigners.pdf]",
+  "extracted_text": null,
+  "error": null,
+  "final_url": "https://fs.knesset.gov.il/globaldocs/MMM/a0be8d55-f7f7-e411-80c8-00155d010977/2_a0be8d55-f7f7-e411-80c8-00155d010977_11_8948.pdf"
+}

@@ -1,0 +1,93 @@
+{
+  "log": [
+    {
+      "timestamp": "2026-02-10T00:00:00",
+      "action": "project_init",
+      "note": "Created project structure. Launching 6 parallel research agents."
+    },
+    {
+      "timestamp": "2026-02-10T00:01:00",
+      "action": "agents_failed",
+      "note": "All 6 background agents failed - WebSearch and WebFetch permissions denied for background sub-agents. They created 2 Python scraping scripts before dying."
+    },
+    {
+      "timestamp": "2026-02-10T00:02:00",
+      "action": "architecture_pivot",
+      "note": "Pivoted architecture: coordinator (me) does web research directly, saves to JSON, then delegates WRITING/ANALYSIS to sub-agents who only need file read/write access."
+    },
+    {
+      "timestamp": "2026-02-10T00:03:00",
+      "action": "research_round_1",
+      "note": "Completed 6 parallel web searches + 6 deep page fetches. Got substantial data on: new law definitions, Palestinian workers coverage, payment mechanisms, Kav LaOved findings, Knesset research doc, territorial application."
+    },
+    {
+      "timestamp": "2026-02-10T17:05:00",
+      "action": "context_restored",
+      "note": "Session restored after context compaction. Verified streams 2,4,6 data files exist from previous save agent. Resumed research for streams 1,3,5."
+    },
+    {
+      "timestamp": "2026-02-10T17:10:00",
+      "action": "python_fetch_success",
+      "note": "User correctly suggested using Python to fetch blocked sources. Created fetch_blocked_sources.py - got 7/9 sources that WebFetch couldn't access (Wikisource 403, Nevo login wall, Wikipedia 403 all bypassed). Only Knesset main site (HTTP 247) still blocked. Fetched 451K chars of FULL NII law from Wikisource."
+    },
+    {
+      "timestamp": "2026-02-10T17:15:00",
+      "action": "critical_discovery_section_378",
+      "note": "Found section 378 of NII law - the COMPLETE definition of 'תושב ישראל באזור' (Israeli resident in the area). Defines it as someone who would be an Israeli resident if in Israel + is citizen/Law of Return eligible/permanent resident + lives in settlements or works in Israel from the area. Also found the full section 2a text and cross-references to 1987 regulations."
+    },
+    {
+      "timestamp": "2026-02-10T17:16:00",
+      "action": "all_streams_data_saved",
+      "note": "All 6 streams have data files in data/ directory. Raw fetches saved in data/raw_fetches/ with full text + metadata + original URLs. Ready for writing phase."
+    }
+  ],
+  "insights": [
+    "The research question doc distinguishes 4 populations: residents, Israeli citizens in West Bank/Gaza, non-citizens in West Bank/Gaza, non-residents/non-citizens",
+    "Style reference is analytical-legal Hebrew, with heavy sourcing, comparison tables, and clear argumentative thread",
+    "Key challenge: some sources (FOI responses, internal guidelines) may not be publicly accessible",
+    "The research question explicitly asks to distinguish what the insured person pays for themselves vs what they are just a conduit for (employer contributions)",
+    "ARCHITECTURE LESSON: Background sub-agents in Claude Code cannot use WebSearch/WebFetch - these require interactive user approval. Only the main agent gets the interactive prompt. Solution: coordinator does web research, delegates writing/analysis to agents.",
+    "ARCHITECTURE LESSON: For future projects - either pre-approve web tools globally before launching agents, OR design agents to only need file read/write + Bash (e.g., run Python scripts that do the fetching)",
+    "ARCHITECTURE LESSON: Python requests with proper User-Agent headers can fetch sources that Claude's WebFetch tool cannot (Wikisource, Wikipedia, Nevo). WebFetch gets 403/login walls. Python bypasses them. ALWAYS prefer Python for scraping.",
+    "ARCHITECTURE LESSON: Save raw text + metadata + original URL for all fetched data (user request). Don't just summarize - preserve originals.",
+    "RESEARCH INSIGHT: The NII law does NOT define 'resident' (תושב) - this is entirely judge-made law via 'center of life' test",
+    "RESEARCH INSIGHT: Section 2a explicitly excludes West Bank/Gaza residents from 'resident' definition via צו הכניסה לישראל (פטור תושבי יהודה ושומרון)",
+    "RESEARCH INSIGHT: Palestinian workers get only 3 of ~12 insurance branches (work injuries, maternity, employer insolvency)",
+    "RESEARCH INSIGHT: Insurance rates differ between work in Israel vs work in West Bank - suggesting the law recognizes territorial distinction",
+    "RESEARCH INSIGHT: Massive gap between law and practice - billions in pension/sick pay funds not reaching workers (Kav LaOved data)",
+    "RESEARCH INSIGHT: Jan 2025 major change - employer responsibility for pay slips transferred from Population Authority to employers",
+    "RESEARCH INSIGHT: Since Oct 2023 war, Palestinian workers largely barred from Israel (~8000 exceptions for essential facilities)",
+    "RESEARCH INSIGHT: Cost estimate for full sovereignty extension to West Bank = 20 billion NIS in NII alone",
+    "RESEARCH INSIGHT: Section 378 is THE key section - defines 'תושב ישראל באזור' with precise criteria (citizenship + settlement residence or employment in Israel)",
+    "RESEARCH INSIGHT: Section 378(ב) gives Minister broad regulatory power over 8 categories of special insured persons",
+    "RESEARCH INSIGHT: Equalization levy (היטל השוואה) = differential between full and partial insurance. In 2014, ~100M NIS deducted from Palestinian workers, mostly diverted to Ministry of Finance",
+    "RESEARCH INSIGHT: State Comptroller found מת\"ש (Matash) conduct 'gravely wrong' - millions in health deductions diverted",
+    "RESEARCH INSIGHT: Salach Hassan case (בג\"ץ 10662/04) is about income support, NOT NII directly - but relevant as first invalidation of Knesset law on social rights grounds",
+    "RESEARCH INSIGHT: Wikisource Interim Agreement Law shows amendments were 'merged' into respective laws - need original amendment text from Nevo"
+  ],
+  "architecture": {
+    "current_approach": "Coordinator does web research -> saves to JSON (raw text + metadata + URLs) -> delegates writing to file-only agents",
+    "lesson_learned": "Sub-agents cannot use WebSearch/WebFetch without pre-approval. Python requests bypass WebFetch limitations.",
+    "scripts_available": [
+      "/Users/zvishalem/Downloads/bituach_leumi_research/scripts/scrape_old_law_nevo.py",
+      "/Users/zvishalem/Downloads/bituach_leumi_research/scripts/scrape_nii_law.py",
+      "/Users/zvishalem/Downloads/bituach_leumi_research/scripts/fetch_blocked_sources.py"
+    ],
+    "raw_fetches": {
+      "directory": "/Users/zvishalem/Downloads/bituach_leumi_research/data/raw_fetches/",
+      "successful_fetches": [
+        "wikisource_interim_agreement.json (8042 chars)",
+        "wikisource_nii_law.json (451588 chars - FULL LAW TEXT)",
+        "knesset_research_nii_foreigners.pdf (336KB)",
+        "nevo_interim_agreement_law.json (19003 chars)",
+        "kolzchut_nii_palestinian.json (6520 chars)",
+        "kolzchut_resident_definition.json (4946 chars)",
+        "wikipedia_salach_hassan.json (15914 chars)"
+      ],
+      "failed_fetches": [
+        "knesset_old_law_page (HTTP 247)",
+        "knesset_new_law_page (HTTP 247)"
+      ]
+    }
+  }
+}
